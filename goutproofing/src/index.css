@@ -1,3 +1,7 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
+
+@theme {
+  --color-beige: #F5F5F4;
+  --color-emerald-600: #059669;
+  --color-emerald-700: #047857;
+}

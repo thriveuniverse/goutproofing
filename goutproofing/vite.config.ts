@@ -5,6 +5,6 @@ import tailwindcss from '@tailwindcss/vite'  // ← The new magic
 export default defineConfig({
   plugins: [
     react(),
-    // tailwindcss(),   // ← uncomment this ONLY if you chose Option A (v4)
+    tailwindcss(),   // ← Tailwind CSS v4 plugin
   ],
 })
