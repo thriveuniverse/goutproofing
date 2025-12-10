@@ -2,6 +2,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import tailwindcss from '@tailwindcss/vite'   // ← THIS IS THE CORRECT ONE
+import { resolve } from 'path'
 
 export default defineConfig({
   plugins: [
@@ -9,4 +10,14 @@ export default defineConfig({
     tailwindcss(),        // ← now it works
   ],
   base: '/',              // ← fixes blank page on Netlify
+  server: {
+    fs: {
+      allow: ['..']
+    }
+  },
+  resolve: {
+    alias: {
+      '@': resolve(__dirname, './src'),
+    },
+  },
 })
