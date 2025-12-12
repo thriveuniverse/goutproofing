@@ -14,9 +14,7 @@ export type Post = {
 
 // Load all MDX files from content/posts as raw text
 // Use an absolute-from-project-root path; ?raw ensures we get file contents
-const postModules = import.meta.glob('/content/posts/*.mdx?raw', { 
-  eager: true
-}) as Record<string, { default: string } | string>;
+const postModules = import.meta.glob('/content/posts/*.mdx', { eager: true, import: 'default', as: 'raw' }) as Record<string, { default: string } | string>;
 
 export function getAllPosts(): Post[] {
   const posts: Post[] = [];
@@ -25,10 +23,10 @@ export function getAllPosts(): Post[] {
   console.log('Post modules found:', Object.keys(postModules));
 
   for (const [path, mod] of Object.entries(postModules)) {
-    // Extract filename from path (e.g., "/content/posts/test-post.mdx?raw" -> "test-post")
-    const filename = path
-      .replace('/content/posts/', '')
-      .replace('.mdx?raw', '');
+    // Extract filename without extension and without ?raw
+const filename = path
+  .replace('/content/posts/', '')
+  .replace(/(\.mdx)?(\?raw)?$/, '');   // removes .mdx and ?raw if present
 
     // Normalize content (string or { default: string })
     const content =
