@@ -59,28 +59,19 @@ export default function App() {
 
         <div className="space-y-8">
           {posts.map((post) => (
-            <article
-              key={post.filename}
-              className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 overflow-hidden flex flex-col md:flex-row"
-            >
-              <div className="md:w-5/12 lg:w-4/12 bg-gradient-to-br from-emerald-500 to-emerald-700"></div>
-              
-              <div className="p-8 md:p-10 md:w-7/12 lg:w-8/12 flex flex-col justify-center">
-                <h3 className="text-2xl md:text-3xl font-bold text-emerald-700 mb-3">
-                  {post.title}
-                </h3>
-                {post.excerpt && (
-                  <p className="text-gray-700 text-lg leading-relaxed mb-4">
-                  {post.excerpt}
-                </p>)}
-                <Link
-                  to={`/blog/${post.filename}`}
-                  className="inline-flex items-center text-emerald-600 font-bold hover:text-emerald-700 transition"
-                >
-                  Read the full post →
-                </Link>
-              </div>
-            </article>
+           <article className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-10">
+  <h3 className="text-xl font-bold text-charcoal-700 mb-4">
+    {post.title}
+  </h3>
+  {post.excerpt && (
+    <p className="text-gray-700 text-base leading-relaxed mb-6">
+      {post.excerpt}
+    </p>
+  )}
+  <Link to={`/blog/${post.filename}`} className="...">
+    Read the full post →
+  </Link>
+</article>
           ))}
         </div>
       </section>
