@@ -59,7 +59,7 @@ export default function App() {
 
             {/* LATEST BLOG POSTS */}
             <section className="max-w-5xl mx-auto px-6 py-16">
-              <h2 className="text-3xl md:text-4xl font-bold text-emerald-700 text-center mb-12">
+              <h2 className="text-2xl md:text-3xl font-bold text-emerald-700 text-center mb-12">
                 Latest from the Trenches
               </h2>
 
@@ -67,9 +67,9 @@ export default function App() {
                 {posts.map((post) => (
                   <article
                     key={post.filename}
-                    className="bg-white rounded-2xl shadow-lg hover:shadow-2xl transition-all duration-300 p-10"
+                    className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-10"
                   >
-                    <h3 className="text-2xl font-bold text-emerald-700 mb-3">
+                    <h3 className="text-xl font-bold text-charcoal-700 mb-3">
                       {post.title}
                     </h3>
                     {post.excerpt && (
@@ -79,7 +79,7 @@ export default function App() {
                     )}
                     <Link
                       to={`/blog/${post.filename}`}
-                      className="inline-flex items-center text-emerald-600 font-bold hover:text-emerald-700 transition"
+                      className="inline-flex items-center text-coral font-bold hover:text-emerald-700 transition"
                     >
                       Read the full post →
                     </Link>
@@ -89,9 +89,9 @@ export default function App() {
             </section>
 
             {/* TOOL CARDS */}
-            <section className="bg-emerald-50 py-20 -mt-12 relative">
+            <section className="bg-beige-50 py-20 -mt-12 relative">
               <div className="max-w-6xl mx-auto px-6">
-                <h2 className="text-4xl md:text-5xl font-bold text-emerald-800 text-center mb-16">
+                <h2 className="text-2xl md:text-3xl font-bold text-emerald-800 text-center mb-16">
                   Your Fastest Wins Start Here
                 </h2>
                 <div className="grid md:grid-cols-3 gap-10 max-w-5xl mx-auto">
@@ -108,7 +108,7 @@ export default function App() {
                       <div className="bg-emerald-100 w-20 h-20 rounded-full mx-auto mb-6 flex items-center justify-center group-hover:bg-emerald-200 transition">
                         <span className="text-4xl">→</span>
                       </div>
-                      <h3 className="text-3xl md:text-4xl font-bold text-emerald-600 group-hover:text-emerald-700 mb-4">
+                      <h3 className="text-2xl md:text-3xl font-bold text-charcoal group-hover:text-emerald-700 mb-4">
                         {tool.title}
                       </h3>
                       <p className="text-lg text-gray-700">{tool.desc}</p>

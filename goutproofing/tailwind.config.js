@@ -13,6 +13,7 @@ content: [
     extend: {
       colors: {
         beige: "#F5F5F4",
+        coral: "FF6F61",
         emerald: {
           600: "#059669",
           700: "#047857",
