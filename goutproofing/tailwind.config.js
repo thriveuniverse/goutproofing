@@ -1,10 +1,14 @@
 // tailwind.config.js   ← MUST be in the project root (same level as package.json)
 /** @type {import('tailwindcss').Config} */
-export default {
-  content: [
-    "./index.html",
-    "./src/**/*.{js,ts,jsx,tsx}",
-  ],
+module.exports = {
+content: [
+  "./index.html",
+  "./src/**/*.{js,ts,jsx,tsx}",
+  './_layouts/**/*.html',
+  './_includes/**/*.html',
+  './posts/**/*.md',   // or './_posts/**/*.md' if that's your folder
+  './*.html',
+],
   theme: {
     extend: {
       colors: {
@@ -16,5 +20,5 @@ export default {
       },
     },
   },
-  plugins: [],
+  
 }
