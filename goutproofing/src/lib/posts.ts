@@ -23,11 +23,10 @@ export function getAllPosts(): Post[] {
   console.log('Post modules found:', Object.keys(postModules));
 
   for (const [path, mod] of Object.entries(postModules)) {
-    // Extract filename without extension and without ?raw
 const filename = path
-  .replace('/content/posts/', '')
-  .replace(/(\.mdx)?(\?raw)?$/, '');   // removes .mdx and ?raw if present
-
+  .split('/')
+  .pop()!                   
+  .replace(/\.mdx$/, '');   
     // Normalize content (string or { default: string })
     const content =
       typeof mod === 'string'

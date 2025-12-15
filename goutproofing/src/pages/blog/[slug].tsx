@@ -2,6 +2,7 @@
 import { useParams, Link } from 'react-router-dom';
 import { getAllPosts, type Post } from '../../lib/posts';
 import { useEffect, useState } from 'react';
+import ReactMarkdown from 'react-markdown';
 
 export default function BlogPost() {
   const { slug } = useParams<{ slug: string }>();
@@ -40,8 +41,8 @@ export default function BlogPost() {
       </header>
 
       <article className="max-w-4xl mx-auto px-6 py-16 prose prose-lg prose-emerald mx-auto">
-        <div dangerouslySetInnerHTML={{ __html: post.body }} />
-      </article>
+  <ReactMarkdown>{post.body}</ReactMarkdown>
+</article>
     </>
   );
 }
