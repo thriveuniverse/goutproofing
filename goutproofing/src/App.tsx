@@ -98,7 +98,7 @@ export default function App() {
                   {[
                     { title: "Daily Gout Plan", desc: "Free personalized 7-day plan in 30 seconds", url: "https://dailygoutplan.com" },
                     { title: "50+ Gout-Safe Recipes", desc: "Delicious meals that actually drop uric acid", url: "https://recipesforgout.com" },
-                    { title: "Flare Emergency Kit", desc: "What to do in the first 24 hours of an attack", url: "https://goutflare.com" },
+                    { title: "Flare Emergency Kit", desc: "What to do in the first 24 hours of an attack", url: "https://goutflarerelief.com" },
                   ].map((tool) => (
                     <a
                       key={tool.title}
