@@ -66,14 +66,14 @@ export default function BlogPost() {
       "description": post.excerpt || "Practical advice on managing gout from lived experience.",
       "author": {
         "@type": "Person",
-        "name": "Your Actual Name" // ← CHANGE THIS
+        "name": "Jonathan Kelly" 
       },
       "publisher": {
         "@type": "Organization",
         "name": "Gout Proofing",
         "logo": {
           "@type": "ImageObject",
-          "url": "https://goutproofing.com/assets/images/logo.png" // add a logo later if you want
+          "url": "https://goutproofing.com/public/jonathan.jpg" 
         }
       },
       "url": fullUrl,
