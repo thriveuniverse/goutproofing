@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+
+// for later Sitemap: https://goutproofing.com/sitemap.xml   # if you add a sitemap later
+
