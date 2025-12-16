@@ -56,36 +56,27 @@ export default function BlogPost() {
       </Helmet>
 
       {/* Structured Data - BlogPosting schema */}
-      {/* Structured Data - Safer BlogPosting schema */}
-<Helmet>
-  <script type="application/ld+json">
-    {JSON.stringify({
-      "@context": "https://schema.org",
-      "@type": "BlogPosting",
-      "headline": post.title || "Untitled Post",
-      "description": post.excerpt || "Practical advice on managing gout from lived experience.",
-      "author": {
-        "@type": "Person",
-        "name": "Jonathan Kelly" 
-      },
-      "publisher": {
-        "@type": "Organization",
-        "name": "Gout Proofing",
-        "logo": {
-          "@type": "ImageObject",
-          "url": "https://goutproofing.com/public/jonathan.jpg" 
-        }
-      },
-      "url": fullUrl,
-      "image": defaultOgImage,
-      "keywords": post.tags?.join(", ") || "gout, uric acid, hyperuricemia, flares",
-      "mainEntityOfPage": {
-        "@type": "WebPage",
-        "@id": fullUrl
-      }
-    }, null, 2)}  {/* null,2 for pretty-print debugging — safe in prod too */}
-  </script>
-</Helmet>
+      <Helmet>
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "BlogPosting",
+            "headline": post.title,
+            "description": post.excerpt || "Practical gout management advice from lived experience",
+            "author": {
+              "@type": "Person",
+              "name": "Jonathan Kelly" 
+            },
+            "publisher": {
+              "@type": "Organization",
+              "name": "Gout Proofing"
+            },
+            "url": fullUrl,
+            "image": defaultOgImage,
+            "keywords": post.tags?.join(", ") || "gout, uric acid, flares, allopurinol"
+          })}
+        </script>
+      </Helmet>
 
       {/* === Your Beautiful Layout (kept almost identical) === */}
       <header className="bg-emerald-600 text-white py-16">
