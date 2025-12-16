@@ -56,27 +56,36 @@ export default function BlogPost() {
       </Helmet>
 
       {/* Structured Data - BlogPosting schema */}
-      <Helmet>
-        <script type="application/ld+json">
-          {JSON.stringify({
-            "@context": "https://schema.org",
-            "@type": "BlogPosting",
-            "headline": post.title,
-            "description": post.excerpt || "Practical gout management advice from lived experience",
-            "author": {
-              "@type": "Person",
-              "name": "Your Name Here" // ← change this!
-            },
-            "publisher": {
-              "@type": "Organization",
-              "name": "Gout Proofing"
-            },
-            "url": fullUrl,
-            "image": defaultOgImage,
-            "keywords": post.tags?.join(", ") || "gout, uric acid, flares, allopurinol"
-          })}
-        </script>
-      </Helmet>
+      {/* Structured Data - Safer BlogPosting schema */}
+<Helmet>
+  <script type="application/ld+json">
+    {JSON.stringify({
+      "@context": "https://schema.org",
+      "@type": "BlogPosting",
+      "headline": post.title || "Untitled Post",
+      "description": post.excerpt || "Practical advice on managing gout from lived experience.",
+      "author": {
+        "@type": "Person",
+        "name": "Your Actual Name" // ← CHANGE THIS
+      },
+      "publisher": {
+        "@type": "Organization",
+        "name": "Gout Proofing",
+        "logo": {
+          "@type": "ImageObject",
+          "url": "https://goutproofing.com/assets/images/logo.png" // add a logo later if you want
+        }
+      },
+      "url": fullUrl,
+      "image": defaultOgImage,
+      "keywords": post.tags?.join(", ") || "gout, uric acid, hyperuricemia, flares",
+      "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": fullUrl
+      }
+    }, null, 2)}  {/* null,2 for pretty-print debugging — safe in prod too */}
+  </script>
+</Helmet>
 
       {/* === Your Beautiful Layout (kept almost identical) === */}
       <header className="bg-emerald-600 text-white py-16">
