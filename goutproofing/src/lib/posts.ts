@@ -1,7 +1,5 @@
-// Utility to load posts from MDX files
+/// <reference types="vite/client" />
 import matter from 'gray-matter';
-// Fallback direct import to ensure at least one post renders if glob fails
-import fallbackPost from '/content/posts/test-post.mdx?raw';
 
 // Type for post frontmatter
 export type Post = {
@@ -13,8 +11,12 @@ export type Post = {
 };
 
 // Load all MDX files from content/posts as raw text
-// Use an absolute-from-project-root path; ?raw ensures we get file contents
-const postModules = import.meta.glob('/content/posts/*.mdx', { eager: true, import: 'default', as: 'raw' }) as Record<string, { default: string } | string>;
+// Updated for Vite 6+: use query: '?raw' instead of as: 'raw'
+const postModules = import.meta.glob('/content/posts/*.mdx', {
+  eager: true,
+  query: '?raw',
+  import: 'default'
+}) as Record<string, string | { default: string }>;
 
 export function getAllPosts(): Post[] {
   const posts: Post[] = [];
@@ -23,15 +25,13 @@ export function getAllPosts(): Post[] {
   console.log('Post modules found:', Object.keys(postModules));
 
   for (const [path, mod] of Object.entries(postModules)) {
-const filename = path
-  .split('/')
-  .pop()!                   
-  .replace(/\.mdx$/, '');   
-    // Normalize content (string or { default: string })
-    const content =
-      typeof mod === 'string'
-        ? mod
-        : (mod as any)?.default ?? '';
+    const filename = path
+      .split('/')
+      .pop()!
+      .replace(/\.mdx$/, '');
+
+    // Normalize content
+    const content = typeof mod === 'string' ? mod : mod.default ?? '';
 
     // Debug: log each file being processed
     console.log('Processing post:', filename, 'Content length:', content.length || 0);
@@ -48,28 +48,14 @@ const filename = path
     });
   }
 
-  // Fallback: if nothing was loaded, try the direct import
-  if (posts.length === 0 && typeof fallbackPost === 'string') {
-    const { data, content: body } = matter(fallbackPost);
-    posts.push({
-      title: data.title || 'Untitled',
-      excerpt: data.excerpt || '',
-      tags: data.tags || [],
-      filename: 'test-post',
-      body,
-    });
-    console.log('Fallback post added from direct import');
-  }
-
   console.log('Total posts loaded:', posts.length);
-
   console.log(`Total posts loaded: ${posts.length}`, posts);
 
-  // Sort by filename (you can change this to sort by date if you add a date field)
+  // Sort by filename (or add a date field later for better sorting)
   return posts.sort((a, b) => a.filename.localeCompare(b.filename));
 }
 
-// Convert posts to TinaCMS format
+// Convert posts to TinaCMS format (if you're using Tina)
 export function getPostsAsTinaData() {
   const posts = getAllPosts();
   
@@ -87,4 +73,3 @@ export function getPostsAsTinaData() {
     },
   };
 }
-
