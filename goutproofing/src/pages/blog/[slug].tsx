@@ -84,7 +84,7 @@ export default function BlogPost() {
           <Link to="/" className="inline-block mb-8 opacity-80 hover:opacity-100">
             ← All posts
           </Link>
-          <h1 className="text-5xl md:text-6xl font-black leading-tight">
+          <h1 className="text-3xl md:text-4xl font-black leading-tight">
             {post.title}
           </h1>
         </div>

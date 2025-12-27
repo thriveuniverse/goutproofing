@@ -2,6 +2,7 @@
 import { Routes, Route, Link } from 'react-router-dom';
 import { getAllPosts } from './lib/posts';
 import BlogPost from './pages/blog/[slug]'; // ← this loads your post page
+import About from './pages/About'; 
 
 export default function App() {
   const posts = getAllPosts();
@@ -130,6 +131,7 @@ export default function App() {
 
       {/* INDIVIDUAL BLOG POST PAGE */}
       <Route path="/blog/:slug" element={<BlogPost />} />
+      <Route path="/about" element={<About />} />
     </Routes>
   );
 }
