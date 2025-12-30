@@ -45,7 +45,7 @@ export default function Manifesto() {
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
-            "@type": "WebPage",
+            "@type": "Article",
             name: "Be Like Wallace – Gout Manifesto",
             description:
               "Why we're refusing the pills-for-life sentence and fighting gout with lifestyle – inspired by Wallace, a coal miner who drank beer and never had a flare.",

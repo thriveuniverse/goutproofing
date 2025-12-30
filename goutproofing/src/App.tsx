@@ -4,7 +4,11 @@ import { getAllPosts } from './lib/posts';
 import Layout from './components/Layout';       
 import BlogPost from './pages/blog/[slug]'; 
 import About from './pages/About'; 
+import BlogIndex from './pages/BlogIndex';
+import Resources from './pages/Resources';
 import Manifesto from './pages/Manifesto'; 
+import { Helmet } from '@dr.pogodin/react-helmet';
+
 
 
 export default function App() {
@@ -19,6 +23,16 @@ export default function App() {
       <Route
         path="/"
         element={
+          <> 
+           <Helmet>
+        <title>Gout Proofing Your Life – Practical Advice to Stay Flare-Free</title>
+        <meta name="description" content="Real-world, no-nonsense strategies to manage and reverse gout through lifestyle changes – from someone who's lived it." />
+        <meta property="og:title" content="Gout Proofing Your Life" />
+        <meta property="og:description" content="Practical, actionable advice to beat gout without feeling deprived." />
+        <meta property="og:url" content="https://goutproofing.com" />
+        <meta property="og:image" content="https://goutproofing.com/social-preview-default.jpg" />
+        <meta property="og:type" content="website" />
+      </Helmet>
           <div className="min-h-screen bg-[#faf6f1]">
 
             {/* HERO SECTION */}
@@ -61,9 +75,9 @@ export default function App() {
   This site is different. Here we cut straight to the practical, actionable stuff...
 </p>
 <p className="mt-6 text-center">
-  <Link to="/why-we-fight" className="inline-block bg-emerald-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-emerald-700 transition text-lg">
-    Read: “Why We’re Fighting Gout the Hard Way” →
-  </Link>
+  <Link to="/manifesto" className="inline-block bg-emerald-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-emerald-700 transition text-lg">
+  Read the Manifesto →
+</Link>
 </p>
                 </div>
               </div>
@@ -76,7 +90,7 @@ export default function App() {
               </h2>
 
               <div className="space-y-8">
-                {posts.map((post) => (
+  {posts.slice(0, 5).map((post) => (
                   <article
                     key={post.filename}
                     className="bg-white rounded-xl shadow-lg hover:shadow-xl transition-all duration-300 p-10"
@@ -133,14 +147,16 @@ export default function App() {
             {/* FOOTER */}
             
           </div>
+          </>
         }
       />
 
       {/* INDIVIDUAL BLOG POST PAGE */}
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/about" element={<About />} />
-      <Route path="/manifesto" element={<Manifesto />} />   
-
+      <Route path="/manifesto" element={<Manifesto />} /> 
+      <Route path="/blog" element={<BlogIndex />} /> 
+      <Route path="/resources" element={<Resources />} /> 
     </Route>
     </Routes>
   );
