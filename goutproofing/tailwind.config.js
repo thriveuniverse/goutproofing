@@ -6,7 +6,7 @@ content: [
   "./src/**/*.{js,ts,jsx,tsx}",
   './_layouts/**/*.html',
   './_includes/**/*.html',
-  './posts/**/*.md',   // or './_posts/**/*.md' if that's your folder
+  './posts/**/*.md',   
   './*.html',
 ],
   theme: {
