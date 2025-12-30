@@ -1,23 +1,25 @@
 // src/pages/About.tsx
-import ReactMarkdown from 'react-markdown';
-import remarkGfm from 'remark-gfm';
+
+import { Helmet } from '@dr.pogodin/react-helmet';
+import ReactMarkdown from "react-markdown";
+import remarkGfm from "remark-gfm";
 
 // Glob all MDX files in /content/pages/ — works in dev and production
-const pageModules = import.meta.glob('/content/pages/*.mdx', {
+const pageModules = import.meta.glob("/content/pages/*.mdx", {
   eager: true,
-  query: '?raw',
-  import: 'default'
+  query: "?raw",
+  import: "default",
 }) as Record<string, string | { default: string }>;
 
 // Helper to safely extract the string content
 function getContent(mod: string | { default: string }): string {
-  return typeof mod === 'string' ? mod : mod.default ?? '';
+  return typeof mod === "string" ? mod : mod.default ?? "";
 }
 
 export default function About() {
   // Find the about.mdx file (case-insensitive just in case)
-  const aboutPath = Object.keys(pageModules).find(
-    (path) => path.toLowerCase().includes('about.mdx')
+  const aboutPath = Object.keys(pageModules).find((path) =>
+    path.toLowerCase().includes("about.mdx")
   );
 
   if (!aboutPath) {
@@ -32,10 +34,31 @@ export default function About() {
   const content = getContent(pageModules[aboutPath]);
 
   return (
-    <article className="max-w-4xl mx-auto px-6 py-16 prose prose-bases prose-emerald">
-      <ReactMarkdown remarkPlugins={[remarkGfm]}>
-        {content}
-      </ReactMarkdown>
-    </article>
+    <>
+      <Helmet>
+        <title>About Jonathan Kelly – Gout Proofing</title>
+        <meta
+          name="description"
+          content="Jonathan's story: from first gout attack to building a life without flares using real food, movement, and smart choices."
+        />
+
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "AboutPage",
+            name: "About Jonathan Kelly – Gout Proofing",
+            description:
+              "Jonathan's story: from first gout attack to building a life without flares using real food, movement, and smart choices.",
+            url: "https://goutproofing.com/about",
+          })}
+        </script>
+      </Helmet>
+
+      <article className="max-w-4xl mx-auto px-6 py-16 prose prose-base prose-emerald">
+        <ReactMarkdown remarkPlugins={[remarkGfm]}>
+          {content}
+        </ReactMarkdown>
+      </article>
+    </>
   );
 }
