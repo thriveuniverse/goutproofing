@@ -21,7 +21,7 @@ export default function BlogPost() {
       <div className="min-h-screen bg-[#faf6f1] flex items-center justify-center">
         <div className="text-center">
           <h1 className="text-4xl font-bold text-emerald-700 mb-6">Post not found</h1>
-          <Link to="/" className="text-emerald-600 hover:underline text-xl">
+          <Link to="/" className="text-emerald-700 hover:underline text-xl">
             ← Back to home
           </Link>
         </div>
@@ -78,8 +78,8 @@ export default function BlogPost() {
         </script>
       </Helmet>
 
-      {/* === Your Beautiful Layout (kept almost identical) === */}
-      <header className="bg-emerald-600 text-white py-16">
+      {/* === My Layout  === */}
+      <header className="bg-emerald-700 text-white py-16">
         <div className="max-w-4xl mx-auto px-6">
           <Link to="/" className="inline-block mb-8 opacity-80 hover:opacity-100">
             ← All posts

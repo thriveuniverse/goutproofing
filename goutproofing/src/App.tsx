@@ -1,22 +1,28 @@
 // src/App.tsx
 import { Routes, Route, Link } from 'react-router-dom';
 import { getAllPosts } from './lib/posts';
-import BlogPost from './pages/blog/[slug]'; // ← this loads your post page
+import Layout from './components/Layout';       
+import BlogPost from './pages/blog/[slug]'; 
 import About from './pages/About'; 
+import Manifesto from './pages/Manifesto'; 
+
 
 export default function App() {
   const posts = getAllPosts();
 
   return (
     <Routes>
+        <Route element={<Layout />}>
+
       {/* HOMEPAGE */}
+
       <Route
         path="/"
         element={
           <div className="min-h-screen bg-[#faf6f1]">
 
             {/* HERO SECTION */}
-            <header className="bg-emerald-600 text-white py-6 md:py-8">
+            <header className="bg-emerald-700 text-white py-6 md:py-8">
               <div className="max-w-5xl mx-auto px-6 flex flex-col md:flex-row items-center">
                 <div className="flex-shrink-0 mb-6 md:mb-0 md:mr-6">
                   <img
@@ -37,11 +43,11 @@ export default function App() {
             </header>
 
             {/* TRUST / BIO SECTION */}
-            <section className="py-12 md:py-16 bg-white">
+            <section className="py-12 md:py-16">
               <div className="max-w-5xl mx-auto px-6">
                 <h2 className="text-xl md:text-2xl font-bold text-gray-900 tracking-tight leading-snug text-center mb-12">
                   <span>Gout is brutal. Your pain is real. </span>
-                  <span className="text-emerald-600">And it’s beatable.</span>
+                  <span className="text-emerald-700">And it’s beatable.</span>
                 </h2>
                 <div className="max-w-prose mx-auto text-gray-700 space-y-6 text-base md:text-lg leading-relaxed">
                   <p>
@@ -52,8 +58,13 @@ export default function App() {
                     The internet drowns you in conflicting studies that leave you not only confused but also depressed.
                   </p>
                   <p className="text-l font-semibold text-gray-900">
-                    This site is different. Here we cut straight to the practical, actionable stuff...
-                  </p>
+  This site is different. Here we cut straight to the practical, actionable stuff...
+</p>
+<p className="mt-6 text-center">
+  <Link to="/why-we-fight" className="inline-block bg-emerald-700 text-white font-bold py-3 px-8 rounded-lg hover:bg-emerald-700 transition text-lg">
+    Read: “Why We’re Fighting Gout the Hard Way” →
+  </Link>
+</p>
                 </div>
               </div>
             </section>
@@ -120,11 +131,7 @@ export default function App() {
             </section>
 
             {/* FOOTER */}
-            <footer className="bg-gray-900 text-white py-16 text-center">
-              <p className="text-lg">
-                © 2025 GoutProofing.com — Built by Jonathan & Mirrie with ♥ and zero flares
-              </p>
-            </footer>
+            
           </div>
         }
       />
@@ -132,6 +139,9 @@ export default function App() {
       {/* INDIVIDUAL BLOG POST PAGE */}
       <Route path="/blog/:slug" element={<BlogPost />} />
       <Route path="/about" element={<About />} />
+      <Route path="/manifesto" element={<Manifesto />} />   
+
+    </Route>
     </Routes>
   );
 }
