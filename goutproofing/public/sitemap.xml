@@ -6,13 +6,54 @@
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://goutproofing.com/blog/01-gout-introduction</loc>
-    <lastmod>2025-12-16</lastmod>
-    <priority>0.8</priority>
+    <loc>https://goutproofing.com/manifesto</loc>
+    <lastmod>2025-12-30</lastmod> <!-- update to today's date -->
+    <priority>0.9</priority>
   </url>
   <url>
     <loc>https://goutproofing.com/about</loc>
     <lastmod>2025-12-16</lastmod>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://goutproofing.com/blog</loc>
+    <lastmod>2025-12-30</lastmod> <!-- today's date -->
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://goutproofing.com/resources</loc>
+    <lastmod>2025-12-30</lastmod>
     <priority>0.7</priority>
+  </url>
+  <!-- Add individual blog posts here with priority 0.6–0.7 -->
+  <url>
+    <loc>https://goutproofing.com/blog/01-gout-introduction</loc>
+    <lastmod>2025-12-16</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://goutproofing.com/blog/02-rollercoaster</loc>
+    <lastmod>2025-12-27</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://goutproofing.com/blog/03-purine-conundrum</loc>
+    <lastmod>2025-12-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://goutproofing.com/blog/04-diet-hacks-that-work</loc>
+    <lastmod>2025-12-28</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://goutproofing.com/blog/05-gout-weight-loss-truths</loc>
+    <lastmod>2026-01-06</lastmod>
+    <priority>0.6</priority>
+  </url>
+  <url>
+    <loc>https://goutproofing.com/blog/06-fuck-gout</loc>
+    <lastmod>2026-01-09</lastmod>
+    <priority>0.6</priority>
   </url>
 </urlset>
